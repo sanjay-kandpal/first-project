@@ -1,0 +1,49 @@
+html{
+    height: 600px;
+}
+body{
+    margin: 10% 0 20% -10%;
+    
+}
+.flex-container{
+    display: flex;
+    justify-content: center;
+}
+/* heading positioning */
+#heading{
+    display: inline-block;
+    height: 400px;
+    width: 580px;
+}
+pre{
+    font-family:  Helvetica, Arial, sans-serif;
+    font-size: 28px;
+    font-weight: normal;
+    line-height: 32px;
+     width: 500px;    
+}
+
+#heading {
+    h1{
+    color: dodgerblue;
+    font-family:  Helvetica,Arial, sans-serif;
+    font-size: 48px;
+    font-weight: bolder;
+    }
+}
+
+/* sign in form */
+.sign-form{
+    display: inline-block;
+    border: 1px solid black;
+    margin-left: 114px;
+    
+}
+.sign-form{
+
+ form{
+   margin-top: 0px;
+   height: 78px;    
+}
+
+}

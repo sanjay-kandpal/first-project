@@ -30,33 +30,42 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
 const port = 8000;
-//const expressLayouts = require('express-ejs-layouts');
+const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose');
 // used for session cookie
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 const MongoStore = require('connect-mongo');
-const 
+const sassMiddleware = require('node-sass-middleware');
 
+app.use(sassMiddleware({
+    src: './assets/scss',
+    dest: './assets/css',
+    debug: true,
+    outputStyle: 'extended',
+    prefix: '/css'
+
+}))
 app.use(express.urlencoded());
 
 app.use(cookieParser());
 
 app.use(express.static('./assets'));
 
-//app.use(expressLayouts);
+app.use(expressLayouts);
 // extract style and scripts from sub pages into the layout
-//app.set('layout extractStyles', true);
-//app.set('layout extractScripts', true);
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
 
 
-// use express router
+
 
 
 // set up the view engine
 app.set('view engine', 'ejs');
 app.set('views', './views');
+
 
 // mongo store is used to store the session cookie in the db
 
