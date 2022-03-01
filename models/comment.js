@@ -9,11 +9,11 @@ const commSchema = new mongoose.Schema({
     },
      //comment belongs to user
     user:{ 
-     type: type.mongoose.Schema.Types.ObjectId,
+     type: mongoose.Schema.Types.ObjectId,
      ref: 'User'
     },  
     post:{
-    type: type.mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Post'
     }
 
@@ -22,5 +22,5 @@ const commSchema = new mongoose.Schema({
 
    });
 
-const Comment = mongoose.model('Comment',commentSchema);
+const Comment = mongoose.model('Comment',commSchema);
 module.exports = Comment;
