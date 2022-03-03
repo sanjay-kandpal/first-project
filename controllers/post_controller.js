@@ -15,6 +15,7 @@ module.exports.create = function (req,res){
              return res.redirect('back');
             })
 }
+//  deleting post authorised user
 module.exports.destroy = function(req,res){
   
   Post.findById(req.params.id,function(err,post){
