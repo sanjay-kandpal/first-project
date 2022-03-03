@@ -11,6 +11,21 @@ module.exports.profile = function(req,res){
     });
    
 }
+
+module.exports.update = function(req,res){
+    if(req.user.id == req.params.id){
+        User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
+            if(err){
+                console.log('enable to update');
+            }
+            return res.redirect('back');
+        })
+    }else{
+        return res.status(401).send("401 service unavialable");
+    }
+}
+
+
  //render the sign up page
 module.exports.signup = function(req,res){
      if(req.isAuthenticated()){
