@@ -3,16 +3,33 @@ const ejs = require('ejs');
 const path = require('path');
 
 
+
+
+
 let transporter = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
     port: 587,
     secure: false,
     auth: {
-        user: 'sanjaykandpal4@gmail.com',
-        password: 'meenakandpal'
+       user: 'sanjaykandpal4@gmail.com',
+       pass: 'meenakandpal'
     }
+
 });
+
+// transporter.set('oauth2_provision_cb', (user, renew, callback)=>{
+//     let accessToken = userTokens[user];
+//     if(!accessToken){
+//         return callback(new Error('Unknown user'));
+//     }else{
+//         return callback(null, accessToken);
+//     }
+// });
+
+
+
+
 
 let renderTemplate = (data,relativePath)=>{
   
