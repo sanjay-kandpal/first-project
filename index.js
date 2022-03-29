@@ -27,6 +27,7 @@ app.listen(port,function(err){
 
 })*/
 const express = require('express');
+const env = require('./config/environment');
 const cookieParser = require('cookie-parser');
 const app = express();
 const port = 8000;
@@ -44,12 +45,12 @@ const MongoStore = require('connect-mongo');
 const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
 const customMware = require('./config/middleware');
-
+const path = require('path')
 
 
 app.use(sassMiddleware({
-    src: './assets/scss',
-    dest: './assets/css',
+    src: path.join(__dirname,env.asset_path,'/scss'),
+    dest: path.join(__dirname,env.asset_path,'css'),
     debug: true,
     outputStyle: 'extended',
     prefix: '/css'
@@ -60,7 +61,7 @@ app.use(express.urlencoded());
 
 app.use(cookieParser());
 
-app.use(express.static('./assets'));
+app.use(express.static(env.asset_path));
 // make uploads path available to the browser
 app.use('/uploads',express.static(__dirname + '/uploads'));
 
@@ -84,7 +85,7 @@ app.use(session({
     name: 'codeial',
     // TODO CHANGE THE SECRET BEFORE DEPLOYMENT IN PRODUCITION MODE
 
-    secret: "blamsomething",
+    secret: env.session_cookie_key,
     saveUninitiliased: false,
     resave: false,
     cookie: {
