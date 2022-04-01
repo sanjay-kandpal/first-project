@@ -22,7 +22,25 @@ const development = {
 }
 
 const production = {
-    name: 'production'
+    name: 'production',
+    asset_path: process.env.CODEIAL_ASSET_PATH,
+    session_cookie_key: process.env.CODEIAL_COOKIE_KEY,
+    db: 'codeial_production',
+    smtp: {
+     service: 'gmail',
+     host: 'smtp.gmail.com',
+     port: 587,
+     secure: false,
+     auth: {
+       user: process.env.CODEIAL_USERNAME,
+       pass: process.env.CODEIAL_PASS
+     }
+    },
+    google_client_ID:  process.env.GOOGLE_CLIENT_ID,
+    google_client_Secret: process.env.GOOGLE_CLIENT_SECRET,
+    google_callback_URL: process.env.GOOGLE_CLIENT_URI,
+    jwt_secret: process.env.CODEIAL_JWT_SECRET
 }
 
-module.exports = development;
+
+module.exports = eval(process.env.CODEIAL_ENVIRONMENT) == undefined ? development : eval(process.env.CODEIAL_ENVIRONMENT);
