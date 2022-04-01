@@ -1,4 +1,4 @@
-/* wron placement of express.urlencoded()
+/* wrong placement of express.urlencoded()
 const express = require('express');
 const cookieParser = require('cookie-parser');
 
@@ -28,6 +28,7 @@ app.listen(port,function(err){
 })*/
 const express = require('express');
 const env = require('./config/environment');
+const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const app = express();
 const port = 8000;
@@ -45,9 +46,11 @@ const MongoStore = require('connect-mongo');
 const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
 const customMware = require('./config/middleware');
-const path = require('path')
+const path = require('path');
 
+console.log(env.name);
 
+if(env.name == 'development'){
 app.use(sassMiddleware({
     src: path.join(__dirname,env.asset_path,'/scss'),
     dest: path.join(__dirname,env.asset_path,'css'),
@@ -55,7 +58,8 @@ app.use(sassMiddleware({
     outputStyle: 'extended',
     prefix: '/css'
 
-}))
+}));
+}
 app.use(express.urlencoded());
 
 
@@ -64,6 +68,8 @@ app.use(cookieParser());
 app.use(express.static(env.asset_path));
 // make uploads path available to the browser
 app.use('/uploads',express.static(__dirname + '/uploads'));
+
+app.use(logger(env.morgan.mode,env.morgan.Option));
 
 app.use(expressLayouts);
 // extract style and scripts from sub pages into the layout
