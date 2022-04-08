@@ -48,18 +48,21 @@ const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
 const customMware = require('./config/middleware');
 const path = require('path');
+const SMTPPool = require('nodemailer/lib/smtp-pool');
 
 console.log(env.name);
 
 if(env.name == 'development'){
 app.use(sassMiddleware({
-    src: path.join(__dirname,env.asset_path,'/scss'),
-    dest: path.join(__dirname,env.asset_path,'css'),
+    src: path.join(__dirname,'./assets/scss'),
+    dest: path.join(__dirname,'./assets/css'),
     debug: true,
     outputStyle: 'extended',
     prefix: '/css'
 
 }));
+
+
 }
 app.use(express.urlencoded());
 
@@ -74,10 +77,10 @@ app.use(logger(env.morgan.mode,env.morgan.Option));
 
 app.use(expressLayouts);
 // extract style and scripts from sub pages into the layout
+
 app.set('layout extractStyles', true);
+
 app.set('layout extractScripts', true);
-
-
 
 
 

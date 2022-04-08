@@ -1,0 +1,89 @@
+body {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh; }
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%; }
+  50% {
+    background-position: 100% 50%; }
+  100% {
+    background-position: 0% 50%; } }
+
+header, footer {
+  display: none;
+  visibility: hidden; }
+
+form {
+  background-color: white;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 12px;
+  width: 23.5vw;
+  height: 83.33vh;
+  margin: 53px auto; }
+  form h1 {
+    margin-top: 64px;
+    margin-bottom: 32px;
+    font-size: 39px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; }
+  form input {
+    display: block;
+    margin: auto;
+    margin-bottom: 16px;
+    border: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #f2f2f2;
+    padding: 12px;
+    border-radius: 3px;
+    width: 250px;
+    outline: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: linear-gradient(90deg, #fafafa, #fafafa) left bottom/100% no-repeat; }
+  form input:focus::placeholder {
+    color: transparent; }
+  form .buttons {
+    display: block;
+    margin: 16px; }
+    form .buttons .btn {
+      width: 250px;
+      border: #f2f2f2;
+      border-radius: 12px;
+      background-color: #6cdaee;
+      padding: 8px;
+      color: white;
+      font-weight: 900; }
+    form .buttons .btn {
+      position: relative;
+      display: block;
+      color: white;
+      font-size: 14px;
+      font-family: "montserrat";
+      text-decoration: none;
+      width: 250px;
+      border: 2px solid #ff7675;
+      padding: 14px 60px;
+      text-transform: uppercase;
+      overflow: hidden;
+      transition: 1s all ease; }
+    form .buttons .btn::before {
+      background: #ff7675;
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      transition: all 0.6s ease; }
+    form .buttons .btn::before {
+      width: 0%;
+      height: 100%; }
+    form .buttons .btn:hover::before {
+      width: 100%; }
+  form a {
+    text-decoration: none; }
