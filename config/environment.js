@@ -28,6 +28,9 @@ const development = {
     google_client_ID:  '843097514994-tts8olbpkabrd9fv355d0ojibmck95l6.apps.googleusercontent.com',
     google_client_Secret: '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',
     google_callback_URL: 'http://localhost:8000/users/auth/google/callback',
+    clientID: '534183821394262',
+    clientSecret: '0a6c1e59ba67a949b26de91d0b15cecd',
+    callbackURL: "http://localhost:8000/users/auth/facebook/callback",
     jwt_secret: 'codeial',
     morgan: {
       mode: 'development',

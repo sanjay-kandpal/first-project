@@ -41,7 +41,7 @@ const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 const passportJWT = require('./config/passport-jwt-strategy');
 const passportGoogle = require('./config/passport-google-oauth2-strategy');
-
+const passportFacebook = require('./config/passport-facebook');
 
 const MongoStore = require('connect-mongo');
 const sassMiddleware = require('node-sass-middleware');
@@ -109,6 +109,7 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(passport.session({secret:'thisis'}));
 
 app.use(passport.setAuthenticatedUser);
 app.use(flash());
